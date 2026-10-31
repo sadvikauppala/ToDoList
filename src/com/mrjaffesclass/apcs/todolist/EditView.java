@@ -226,9 +226,7 @@ public class EditView extends javax.swing.JDialog implements MessageHandler {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemDateFeildActionPerformed
 
-  /**
-   * @param args the command line arguments
-   */
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelBtn;
     private javax.swing.JCheckBox completedCheckBox;

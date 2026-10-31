@@ -340,9 +340,7 @@ public class MainView extends javax.swing.JFrame implements MessageHandler {
         messenger.notify("sortEarliestLast", this);
     }//GEN-LAST:event_sortLastBtnActionPerformed
 
-  /**
-   * @param args the command line arguments
-   */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutBtn;
