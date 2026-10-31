@@ -91,28 +91,21 @@ jobs:
     needs: build-and-test
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
-    continue-on-error: true
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Download Javadoc Artifact
         uses: actions/download-artifact@v4
         with:
           name: javadoc-html
-          path: ./site
+          path: site
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages Branch (gh-pages)
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: site
+          branch: gh-pages
 
   deploy-release:
     name: Publish Automated GitHub Release

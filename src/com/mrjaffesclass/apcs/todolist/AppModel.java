@@ -139,7 +139,7 @@ public class AppModel implements MessageHandler {
    * Get the to do list
    * @return The to do list
    */
-  public ArrayList getItems() {
+  public ArrayList<ToDoItem> getItems() {
     return toDoList;
   }
   
