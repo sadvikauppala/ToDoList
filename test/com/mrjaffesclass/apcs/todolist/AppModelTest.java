@@ -155,26 +155,24 @@ public class AppModelTest {
    */
   @Test
   public void testSortByDate() {
-      ToDoItem earliestItem = new ToDoItem(-1, "02/21/2014", new Date(1392969600000L)), 
-              middleItem = new ToDoItem(-1, "03/20/2014", new Date(1395298800000L)),
-              latestItem = new ToDoItem(-1, "04/27/2015", new Date(1430118000000L));
-      addSampleItems(model);
+      ToDoItem earliestItem = new ToDoItem(-1, "02/21/2014", new Date(1392969600000L));
+      ToDoItem middleItem = new ToDoItem(-1, "03/20/2014", new Date(1395298800000L));
+      ToDoItem latestItem = new ToDoItem(-1, "04/27/2015", new Date(1430118000000L));
       //Test sort earliest first
+      model.putItem(latestItem);
       model.putItem(earliestItem);
-      model.putItem(middleItem);
       model.putItem(middleItem);
       model.sortByDate(true);
-      assertEquals(earliestItem, testArrayList.remove(0));
-      assertEquals(middleItem, testArrayList.remove(0));
-      assertEquals(latestItem, testArrayList.remove(0));
+      ArrayList<ToDoItem> items = model.getItems();
+      assertEquals(earliestItem, items.get(0));
+      assertEquals(middleItem, items.get(1));
+      assertEquals(latestItem, items.get(2));
       //Now test sort Earliest Last
-      model.putItem(earliestItem);
-      model.putItem(middleItem);
-      model.putItem(middleItem);
       model.sortByDate(false);
-      assertEquals(latestItem, testArrayList.remove(0));
-      assertEquals(middleItem, testArrayList.remove(0));
-      assertEquals(earliestItem, testArrayList.remove(0));
+      items = model.getItems();
+      assertEquals(latestItem, items.get(0));
+      assertEquals(middleItem, items.get(1));
+      assertEquals(earliestItem, items.get(2));
   }
   
   /**
